@@ -1,6 +1,8 @@
 /*
 Name: Suemon Kwok
+
 Student ID: 14883335
+
 Software Construction COMP603 / ENSE 600
 */
 
@@ -8,9 +10,9 @@ package assignment_2_sudoku_gui.test;
 
 import assignment_2_sudoku_gui.database.DatabaseManager;
 
-/**
- * Simple test to verify Derby database setup
- */
+
+//Simple test to verify Derby database setup
+
 public class DatabaseManagerTest {
     
     public static void main(String[] args) {

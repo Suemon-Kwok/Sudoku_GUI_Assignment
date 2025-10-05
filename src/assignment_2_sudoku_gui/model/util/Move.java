@@ -1,14 +1,17 @@
 /*
 Name: Suemon Kwok
+
 Student ID: 14883335
+
 Software Construction COMP603 / ENSE 600
 */
 
 package assignment_2_sudoku_gui.model.util;
 
-/**
- * Immutable class representing a single move.
- * Reused from CUI version.
+/*
+Immutable class representing a single move.
+
+Reused from CUI version.
  */
 public class Move {
     

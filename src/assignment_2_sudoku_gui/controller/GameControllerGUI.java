@@ -1,6 +1,8 @@
 /*
 Name: Suemon Kwok
+
 Student ID: 14883335
+
 Software Construction COMP603 / ENSE 600
 */
 
@@ -21,10 +23,12 @@ import assignment_2_sudoku_gui.ui.GamePanel;
 import javax.swing.JOptionPane;
 import java.awt.Color;
 
-/**
- * Main game controller for GUI version.
- * Manages game logic, state, and coordinates between model and view.
- * Demonstrates MVC pattern and separation of concerns.
+/*
+Main game controller for GUI version.
+
+Manages game logic, state, and coordinates between model and view.
+
+Demonstrates MVC pattern and separation of concerns.
  */
 public class GameControllerGUI {
     
@@ -37,31 +41,31 @@ public class GameControllerGUI {
     private StatusPanel statusPanel;
     private GamePanel gamePanel;
     
-    /**
-     * Constructor initializes controller
-     */
+    
+    //Constructor initializes controller
+    
     public GameControllerGUI() {
         this.gameInProgress = false;
         this.hintStrategy = new BasicHintStrategy();
     }
     
-    /**
-     * Sets the status panel reference
-     */
+    
+    //Sets the status panel reference
+    
     public void setStatusPanel(StatusPanel statusPanel) {
         this.statusPanel = statusPanel;
     }
     
-    /**
-     * Sets the game panel reference
-     */
+    
+    //Sets the game panel reference
+    
     public void setGamePanel(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
     }
     
-    /**
-     * Starts a new game with specified mode and difficulty
-     */
+    
+    //Starts a new game with specified mode and difficulty
+    
     public void startNewGame(boolean isTimedMode, DifficultyLevel difficulty) {
         // Create appropriate game mode
         if (isTimedMode) {
@@ -87,9 +91,9 @@ public class GameControllerGUI {
         }
     }
     
-    /**
-     * Makes a move on the puzzle
-     */
+    
+    //Makes a move on the puzzle
+    
     public void makeMove(int row, int col, int value) {
         if (!gameInProgress || currentPuzzle == null) {
             return;
@@ -129,9 +133,9 @@ public class GameControllerGUI {
         }
     }
     
-    /**
-     * Handles puzzle completion
-     */
+    
+    //Handles puzzle completion
+    
     private void handlePuzzleCompletion() {
         gameInProgress = false;
         
@@ -156,9 +160,9 @@ public class GameControllerGUI {
             JOptionPane.INFORMATION_MESSAGE);
     }
     
-    /**
-     * Undoes the last move
-     */
+    
+    //Undoes the last move
+    
     public boolean undoMove() {
         if (!gameInProgress || currentPuzzle == null) {
             return false;
@@ -173,9 +177,9 @@ public class GameControllerGUI {
         return success;
     }
     
-    /**
-     * Gets a hint for the current puzzle
-     */
+    
+    //Gets a hint for the current puzzle
+    
     public String getHint() {
         if (!gameInProgress || currentPuzzle == null) {
             return "No game in progress";
@@ -184,9 +188,9 @@ public class GameControllerGUI {
         return hintStrategy.generateHint(currentPuzzle);
     }
     
-    /**
-     * Automatically solves the puzzle
-     */
+    
+    //Automatically solves the puzzle
+    
     public boolean solvePuzzle() {
         if (!gameInProgress || currentPuzzle == null) {
             return false;
@@ -215,9 +219,9 @@ public class GameControllerGUI {
         return false;
     }
     
-    /**
-     * Saves the current game to database
-     */
+    
+    //Saves the current game to database
+    
     public boolean saveGame(String gameName) {
         if (!gameInProgress || currentPuzzle == null) {
             return false;
@@ -239,9 +243,9 @@ public class GameControllerGUI {
         );
     }
     
-    /**
-     * Loads a game from database
-     */
+    
+    //Loads a game from database
+    
     public boolean loadGame(String gameName) {
         SavedGameData gameData = DatabaseManager.getInstance().loadGame(gameName);
         
@@ -298,9 +302,9 @@ public class GameControllerGUI {
         }
     }
     
-    /**
-     * Converts grid to string format for database storage
-     */
+    
+    //Converts grid to string format for database storage
+    
     private String gridToString(int[][] grid) {
         StringBuilder sb = new StringBuilder();
         for (int row = 0; row < 9; row++) {
@@ -313,9 +317,9 @@ public class GameControllerGUI {
         return sb.toString();
     }
     
-    /**
-     * Converts string format to grid array
-     */
+    
+    //Converts string format to grid array
+    
     private int[][] stringToGrid(String data) {
         int[][] grid = new int[9][9];
         String[] rows = data.split(";");
@@ -330,9 +334,9 @@ public class GameControllerGUI {
         return grid;
     }
     
-    /**
-     * Gets original grid from current puzzle
-     */
+    
+    //Gets original grid from current puzzle
+    
     private int[][] getOriginalGrid() {
         int[][] original = new int[9][9];
         int[][] current = currentPuzzle.getGrid();
@@ -348,9 +352,9 @@ public class GameControllerGUI {
         return original;
     }
     
-    /**
-     * Sets original grid for puzzle
-     */
+    
+    //Sets original grid for puzzle
+    
     private void setOriginalGrid(int[][] original) {
         // This is a workaround since we need access to originalGrid
         // In a real implementation, you might add a setter to SudokuPuzzle
@@ -363,9 +367,9 @@ public class GameControllerGUI {
         }
     }
     
-    /**
-     * Formats milliseconds to readable time
-     */
+    
+    //Formats milliseconds to readable time
+    
     private String formatTime(long milliseconds) {
         long seconds = milliseconds / 1000;
         long minutes = seconds / 60;
@@ -373,23 +377,23 @@ public class GameControllerGUI {
         return String.format("%02d:%02d", minutes, seconds);
     }
     
-    /**
-     * Checks if game is currently in progress
-     */
+    
+    //Checks if game is currently in progress
+    
     public boolean isGameInProgress() {
         return gameInProgress;
     }
     
-    /**
-     * Gets current puzzle
-     */
+    
+    //Gets current puzzle
+    
     public SudokuPuzzle getCurrentPuzzle() {
         return currentPuzzle;
     }
     
-    /**
-     * Gets current game mode
-     */
+    
+    //Gets current game mode
+    
     public GameMode getCurrentMode() {
         return currentMode;
     }

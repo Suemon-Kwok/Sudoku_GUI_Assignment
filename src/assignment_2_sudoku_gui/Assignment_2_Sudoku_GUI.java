@@ -1,6 +1,8 @@
 /*
 Name: Suemon Kwok
+
 Student ID: 14883335
+
 Software Construction COMP603 / ENSE 600
 */
 
@@ -11,9 +13,10 @@ import assignment_2_sudoku_gui.database.DatabaseManager;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
-/**
- * Main entry point for the Sudoku GUI application.
- * Initializes database and launches the GUI on the Event Dispatch Thread.
+/*
+Main entry point for the Sudoku GUI application.
+
+Initializes database and launches the GUI on the Event Dispatch Thread.
  */
 public class Assignment_2_Sudoku_GUI {
     

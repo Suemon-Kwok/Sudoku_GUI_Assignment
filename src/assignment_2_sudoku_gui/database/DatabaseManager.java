@@ -1,6 +1,8 @@
 /*
 Name: Suemon Kwok
+
 Student ID: 14883335
+
 Software Construction COMP603 / ENSE 600
 */
 
@@ -10,10 +12,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Singleton class managing Derby embedded database connections and operations.
- * Handles automatic database setup and all CRUD operations.
- * Uses embedded mode - no need to start Derby server manually.
+/*
+Singleton class managing Derby embedded database connections and operations.
+
+Handles automatic database setup and all CRUD operations.
+
+Uses embedded mode - no need to start Derby server manually.
  */
 public class DatabaseManager {
     
@@ -25,9 +29,9 @@ public class DatabaseManager {
     
     private Connection connection;
     
-    /**
-     * Private constructor for singleton pattern
-     */
+    
+    //Private constructor for singleton pattern
+    
     private DatabaseManager() {
         try {
             // Load Derby embedded driver
@@ -39,9 +43,9 @@ public class DatabaseManager {
         }
     }
     
-    /**
-     * Gets singleton instance with thread-safe double-checked locking
-     */
+    
+    //Gets singleton instance with thread-safe double-checked locking
+    
     public static synchronized DatabaseManager getInstance() {
         if (instance == null) {
             instance = new DatabaseManager();
@@ -49,9 +53,9 @@ public class DatabaseManager {
         return instance;
     }
     
-    /**
-     * Initializes database and creates tables if they don't exist
-     */
+    
+    //Initializes database and creates tables if they don't exist
+    
     public void initializeDatabase() throws SQLException {
         try {
             connection = DriverManager.getConnection(DB_URL);
@@ -65,9 +69,9 @@ public class DatabaseManager {
         }
     }
     
-    /**
-     * Creates necessary database tables
-     */
+    
+    //Creates necessary database tables
+    
     private void createTables() throws SQLException {
         try (Statement stmt = connection.createStatement()) {
             
@@ -152,9 +156,9 @@ public class DatabaseManager {
         }
     }
     
-    /**
-     * Gets active database connection
-     */
+    
+    //Gets active database connection
+    
     public Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {
             connection = DriverManager.getConnection(DB_URL);
@@ -162,9 +166,10 @@ public class DatabaseManager {
         return connection;
     }
     
-    /**
-     * Saves a game to the database
-     * Uses separate UPDATE or INSERT logic instead of MERGE for Derby compatibility
+    /*
+    Saves a game to the database
+    
+    Uses separate UPDATE or INSERT logic instead of MERGE for Derby compatibility
      */
     public boolean saveGame(String gameName, String gridData, String originalGrid, 
                            String difficulty, String gameMode, long playTime) {
@@ -233,9 +238,9 @@ public class DatabaseManager {
         }
     }
     
-    /**
-     * Loads a game from the database
-     */
+    
+    //Loads a game from the database
+    
     public SavedGameData loadGame(String gameName) {
         String sql = "SELECT * FROM SavedGames WHERE gameName = ?";
         
@@ -262,9 +267,9 @@ public class DatabaseManager {
         return null;
     }
     
-    /**
-     * Gets list of all saved game names
-     */
+    
+    //Gets list of all saved game names
+    
     public List<String> getSavedGameNames() {
         List<String> names = new ArrayList<>();
         String sql = "SELECT gameName FROM SavedGames ORDER BY saveDate DESC";
@@ -282,9 +287,9 @@ public class DatabaseManager {
         return names;
     }
     
-    /**
-     * Deletes a saved game
-     */
+    
+    //Deletes a saved game
+    
     public boolean deleteGame(String gameName) {
         String sql = "DELETE FROM SavedGames WHERE gameName = ?";
         
@@ -302,9 +307,9 @@ public class DatabaseManager {
         }
     }
     
-    /**
-     * Updates game statistics
-     */
+    
+    //Updates game statistics
+    
     public boolean updateStatistics(int gamesPlayed, int gamesWon, long playTime, String difficulty) {
         String sql = """
             UPDATE GameStatistics SET 
@@ -339,9 +344,9 @@ public class DatabaseManager {
         }
     }
     
-    /**
-     * Retrieves game statistics
-     */
+    
+    //Retrieves game statistics
+    
     public StatisticsData getStatistics() {
         String sql = "SELECT * FROM GameStatistics WHERE id = 1";
         
@@ -366,9 +371,9 @@ public class DatabaseManager {
         return new StatisticsData(0, 0, 0, 0, 0, 0, 0);
     }
     
-    /**
-     * Closes database connection
-     */
+    
+    //Closes database connection
+    
     public void closeConnection() {
         try {
             if (connection != null && !connection.isClosed()) {
@@ -381,9 +386,9 @@ public class DatabaseManager {
         }
     }
     
-    /**
-     * Shuts down Derby database properly
-     */
+    
+    //Shuts down Derby database properly
+    
     public void shutdownDatabase() {
         try {
             DriverManager.getConnection("jdbc:derby:;shutdown=true");

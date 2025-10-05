@@ -1,6 +1,8 @@
 /*
 Name: Suemon Kwok
+
 Student ID: 14883335
+
 Software Construction COMP603 / ENSE 600
 */
 
@@ -11,25 +13,26 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- * Unit tests for SudokuPuzzle class.
- * Tests core puzzle functionality and validation logic.
+/*
+Unit tests for SudokuPuzzle class.
+
+Tests core puzzle functionality and validation logic.
  */
 public class SudokuPuzzleTest {
     
     private SudokuPuzzle puzzle;
     
-    /**
-     * Set up test fixture before each test
-     */
+   
+    //Set up test fixture before each test
+    
     @Before
     public void setUp() {
         puzzle = new SudokuPuzzle();
     }
     
-    /**
-     * Test puzzle initialization
-     */
+    
+    //Test puzzle initialization
+    
     @Test
     public void testPuzzleInitialization() {
         assertNotNull("Puzzle should be initialized", puzzle);
@@ -38,9 +41,9 @@ public class SudokuPuzzleTest {
         assertNotNull("Grid should be initialized", puzzle.getGrid());
     }
     
-    /**
-     * Test valid move placement
-     */
+    
+    //Test valid move placement
+    
     @Test
     public void testValidMove() {
         // Place a number in empty grid
@@ -55,9 +58,9 @@ public class SudokuPuzzleTest {
                    puzzle.isValidMove(1, 0, 3));
     }
     
-    /**
-     * Test invalid move detection - row conflict
-     */
+    
+    //Test invalid move detection - row conflict
+    
     @Test
     public void testInvalidMoveRowConflict() {
         puzzle.setCell(0, 0, 5);
@@ -67,9 +70,9 @@ public class SudokuPuzzleTest {
                     puzzle.isValidMove(0, 5, 5));
     }
     
-    /**
-     * Test invalid move detection - column conflict
-     */
+    
+    //Test invalid move detection - column conflict
+    
     @Test
     public void testInvalidMoveColumnConflict() {
         puzzle.setCell(0, 0, 5);
@@ -79,9 +82,9 @@ public class SudokuPuzzleTest {
                     puzzle.isValidMove(5, 0, 5));
     }
     
-    /**
-     * Test invalid move detection - box conflict
-     */
+    
+    //Test invalid move detection - box conflict
+    
     @Test
     public void testInvalidMoveBoxConflict() {
         puzzle.setCell(0, 0, 5);
@@ -91,9 +94,9 @@ public class SudokuPuzzleTest {
                     puzzle.isValidMove(2, 2, 5));
     }
     
-    /**
-     * Test cell modification
-     */
+    
+    //Test cell modification
+    
     @Test
     public void testSetCell() {
         puzzle.setCell(4, 4, 7);
@@ -101,9 +104,9 @@ public class SudokuPuzzleTest {
                      7, puzzle.getGrid()[4][4]);
     }
     
-    /**
-     * Test original grid marking
-     */
+    
+    //Test original grid marking
+    
     @Test
     public void testOriginalGridMarking() {
         puzzle.setCell(0, 0, 5);
@@ -118,9 +121,9 @@ public class SudokuPuzzleTest {
                     puzzle.isCellOriginal(2, 2));
     }
     
-    /**
-     * Test move history with undo
-     */
+    
+    //Test move history with undo
+    
     @Test
     public void testMoveHistoryAndUndo() {
         puzzle.setOriginalGrid(); // Mark as original so moves are allowed
@@ -134,18 +137,18 @@ public class SudokuPuzzleTest {
                      0, puzzle.getGrid()[0][0]);
     }
     
-    /**
-     * Test undo with no moves
-     */
+    
+    //Test undo with no moves
+    
     @Test
     public void testUndoWithNoMoves() {
         assertFalse("Undo should fail with no moves", 
                     puzzle.undoMove());
     }
     
-    /**
-     * Test multiple moves and undos
-     */
+    
+    //Test multiple moves and undos
+    
     @Test
     public void testMultipleMovesAndUndos() {
         puzzle.setOriginalGrid();
@@ -170,9 +173,9 @@ public class SudokuPuzzleTest {
                      0, puzzle.getGrid()[0][1]);
     }
     
-    /**
-     * Test puzzle validation with valid configuration
-     */
+    
+    //Test puzzle validation with valid configuration
+    
     @Test
     public void testValidPuzzleConfiguration() {
         // Create a valid partial puzzle
@@ -184,9 +187,9 @@ public class SudokuPuzzleTest {
                    puzzle.isValidPuzzle());
     }
     
-    /**
-     * Test puzzle validation with invalid configuration
-     */
+    
+    //Test puzzle validation with invalid configuration
+    
     @Test
     public void testInvalidPuzzleConfiguration() {
         // Create invalid puzzle with duplicate in row
@@ -197,9 +200,9 @@ public class SudokuPuzzleTest {
                     puzzle.isValidPuzzle());
     }
     
-    /**
-     * Test puzzle solving capability
-     */
+    
+    //Test puzzle solving capability
+    
     @Test
     public void testPuzzleSolving() {
         // Create a simple solvable puzzle
@@ -224,9 +227,9 @@ public class SudokuPuzzleTest {
         assertTrue("Puzzle should be solvable", puzzle.canBeSolved());
     }
     
-    /**
-     * Test that original cells cannot be modified
-     */
+    
+    //Test that original cells cannot be modified
+    
     @Test
     public void testOriginalCellsCannotBeModified() {
         puzzle.setCell(0, 0, 5);

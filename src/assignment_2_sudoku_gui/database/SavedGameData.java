@@ -1,6 +1,8 @@
 /*
 Name: Suemon Kwok
+
 Student ID: 14883335
+
 Software Construction COMP603 / ENSE 600
 */
 
@@ -8,9 +10,10 @@ package assignment_2_sudoku_gui.database;
 
 import java.sql.Timestamp;
 
-/**
- * Immutable data transfer object for saved game data.
- * Demonstrates immutable design pattern.
+/*
+Immutable data transfer object for saved game data.
+
+Demonstrates immutable design pattern.
  */
 public class SavedGameData {
     private final String gameName;

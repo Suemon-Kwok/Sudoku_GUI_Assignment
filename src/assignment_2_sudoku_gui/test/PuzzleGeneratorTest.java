@@ -1,6 +1,8 @@
 /*
 Name: Suemon Kwok
+
 Student ID: 14883335
+
 Software Construction COMP603 / ENSE 600
 */
 
@@ -13,35 +15,36 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- * Unit tests for PuzzleGenerator class.
- * Tests puzzle generation and validation.
+/*
+Unit tests for PuzzleGenerator class.
+
+Tests puzzle generation and validation.
  */
 public class PuzzleGeneratorTest {
     
     private PuzzleGenerator generator;
     private SudokuPuzzle puzzle;
     
-    /**
-     * Set up test fixture before each test
-     */
+    
+    //Set up test fixture before each test
+    
     @Before
     public void setUp() {
         generator = new PuzzleGenerator();
         puzzle = new SudokuPuzzle();
     }
     
-    /**
-     * Test generator initialization
-     */
+    
+    //Test generator initialization
+    
     @Test
     public void testGeneratorInitialization() {
         assertNotNull("Generator should be initialized", generator);
     }
     
-    /**
-     * Test easy puzzle generation
-     */
+    
+    //Test easy puzzle generation
+    
     @Test
     public void testGenerateEasyPuzzle() {
         generator.generatePuzzle(puzzle, DifficultyLevel.EASY);
@@ -54,9 +57,9 @@ public class PuzzleGeneratorTest {
                     40, clueCount);
     }
     
-    /**
-     * Test medium puzzle generation
-     */
+    
+    //Test medium puzzle generation
+    
     @Test
     public void testGenerateMediumPuzzle() {
         generator.generatePuzzle(puzzle, DifficultyLevel.MEDIUM);
@@ -68,9 +71,9 @@ public class PuzzleGeneratorTest {
                     30, clueCount);
     }
     
-    /**
-     * Test hard puzzle generation
-     */
+    
+    //Test hard puzzle generation
+    
     @Test
     public void testGenerateHardPuzzle() {
         generator.generatePuzzle(puzzle, DifficultyLevel.HARD);
@@ -82,9 +85,9 @@ public class PuzzleGeneratorTest {
                     25, clueCount);
     }
     
-    /**
-     * Test expert puzzle generation
-     */
+    
+    //Test expert puzzle generation
+    
     @Test
     public void testGenerateExpertPuzzle() {
         generator.generatePuzzle(puzzle, DifficultyLevel.EXPERT);
@@ -96,9 +99,9 @@ public class PuzzleGeneratorTest {
                     20, clueCount);
     }
     
-    /**
-     * Test generated puzzle is solvable
-     */
+    
+    //Test generated puzzle is solvable
+    
     @Test
     public void testGeneratedPuzzleIsSolvable() {
         generator.generatePuzzle(puzzle, DifficultyLevel.MEDIUM);
@@ -107,9 +110,9 @@ public class PuzzleGeneratorTest {
                   puzzle.canBeSolved());
     }
     
-    /**
-     * Test generated puzzle has no duplicates
-     */
+    
+    //Test generated puzzle has no duplicates
+    
     @Test
     public void testGeneratedPuzzleHasNoDuplicates() {
         generator.generatePuzzle(puzzle, DifficultyLevel.EASY);
@@ -135,9 +138,9 @@ public class PuzzleGeneratorTest {
         }
     }
     
-    /**
-     * Test multiple puzzle generations
-     */
+    
+    //Test multiple puzzle generations
+    
     @Test
     public void testMultiplePuzzleGenerations() {
         for (int i = 0; i < 5; i++) {
@@ -151,9 +154,9 @@ public class PuzzleGeneratorTest {
         }
     }
     
-    /**
-     * Helper method to count clues in puzzle
-     */
+    
+    //Helper method to count clues in puzzle
+    
     private int countClues(SudokuPuzzle puzzle) {
         int count = 0;
         int[][] grid = puzzle.getGrid();
@@ -169,9 +172,9 @@ public class PuzzleGeneratorTest {
         return count;
     }
     
-    /**
-     * Helper method to validate row
-     */
+    
+    //Helper method to validate row
+    
     private boolean isRowValid(SudokuPuzzle puzzle, int row) {
         boolean[] used = new boolean[10];
         int[][] grid = puzzle.getGrid();
@@ -186,9 +189,9 @@ public class PuzzleGeneratorTest {
         return true;
     }
     
-    /**
-     * Helper method to validate column
-     */
+    
+    //Helper method to validate column
+    
     private boolean isColumnValid(SudokuPuzzle puzzle, int col) {
         boolean[] used = new boolean[10];
         int[][] grid = puzzle.getGrid();
@@ -203,9 +206,9 @@ public class PuzzleGeneratorTest {
         return true;
     }
     
-    /**
-     * Helper method to validate 3x3 box
-     */
+    
+    //Helper method to validate 3x3 box
+    
     private boolean isBoxValid(SudokuPuzzle puzzle, int startRow, int startCol) {
         boolean[] used = new boolean[10];
         int[][] grid = puzzle.getGrid();

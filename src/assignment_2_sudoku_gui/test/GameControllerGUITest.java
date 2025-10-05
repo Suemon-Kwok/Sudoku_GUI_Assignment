@@ -1,6 +1,8 @@
 /*
 Name: Suemon Kwok
+
 Student ID: 14883335
+
 Software Construction COMP603 / ENSE 600
 */
 
@@ -13,9 +15,10 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- * Unit tests for GameControllerGUI class.
- * Tests game flow and state management.
+/*
+Unit tests for GameControllerGUI class.
+
+Tests game flow and state management.
  */
 public class GameControllerGUITest {
     

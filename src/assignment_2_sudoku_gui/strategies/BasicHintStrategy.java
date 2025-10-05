@@ -1,6 +1,8 @@
 /*
 Name: Suemon Kwok
+
 Student ID: 14883335
+
 Software Construction COMP603 / ENSE 600
 */
 
@@ -10,9 +12,10 @@ import assignment_2_sudoku_gui.model.puzzle.SudokuPuzzle;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Basic hint strategy implementation.
- * Reused from CUI version with same logic.
+/*
+Basic hint strategy implementation.
+
+Reused from CUI version with same logic.
  */
 public class BasicHintStrategy extends HintStrategy {
     

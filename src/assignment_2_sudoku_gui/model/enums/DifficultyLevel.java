@@ -1,14 +1,17 @@
 /*
 Name: Suemon Kwok
+
 Student ID: 14883335
+
 Software Construction COMP603 / ENSE 600
 */
 
 package assignment_2_sudoku_gui.model.enums;
 
-/**
- * Enumeration defining difficulty levels.
- * Reused from CUI version.
+/*
+Enumeration defining difficulty levels.
+
+Reused from CUI version.
  */
 public enum DifficultyLevel {
     EASY(40, "Easy - 40 clues"),

@@ -1,14 +1,16 @@
 /*
 Name: Suemon Kwok
+
 Student ID: 14883335
+
 Software Construction COMP603 / ENSE 600
 */
 
 package assignment_2_sudoku_gui.database;
 
-/**
- * Immutable data transfer object for statistics data.
- */
+
+//Immutable data transfer object for statistics data.
+
 public class StatisticsData {
     private final int gamesPlayed;
     private final int gamesWon;
