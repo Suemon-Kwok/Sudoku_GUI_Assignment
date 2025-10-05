@@ -1,6 +1,8 @@
 /*
 Name: Suemon Kwok
+
 Student ID: 14883335
+
 Software Construction COMP603 / ENSE 600
 */
 
@@ -12,9 +14,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-/**
- * Panel displaying the Sudoku grid with interactive cells.
- * Handles cell selection and input validation.
+/*
+Panel displaying the Sudoku grid with interactive cells.
+
+Handles cell selection and input validation.
  */
 public class GamePanel extends JPanel {
     
@@ -30,9 +33,9 @@ public class GamePanel extends JPanel {
     private static final Color SELECTED_COLOR = new Color(187, 222, 251);
     private static final Color FIXED_CELL_COLOR = new Color(230, 230, 230);
     
-    /**
-     * Constructor initializes the game panel
-     */
+    
+    //Constructor initializes the game panel
+    
     public GamePanel(GameControllerGUI controller) {
         this.controller = controller;
         this.cells = new SudokuCell[GRID_SIZE][GRID_SIZE];
@@ -42,9 +45,9 @@ public class GamePanel extends JPanel {
         setupKeyBindings();
     }
     
-    /**
-     * Sets up panel properties
-     */
+    
+    //Sets up panel properties
+    
     private void setupPanel() {
         setLayout(new GridLayout(GRID_SIZE, GRID_SIZE, 0, 0));
         setPreferredSize(new Dimension(CELL_SIZE * GRID_SIZE, CELL_SIZE * GRID_SIZE));
@@ -52,9 +55,9 @@ public class GamePanel extends JPanel {
         setBorder(BorderFactory.createLineBorder(THICK_GRID_COLOR, 3));
     }
     
-    /**
-     * Creates all cell components
-     */
+    
+    //Creates all cell components
+    
     private void createCells() {
         for (int row = 0; row < GRID_SIZE; row++) {
             for (int col = 0; col < GRID_SIZE; col++) {
@@ -79,9 +82,9 @@ public class GamePanel extends JPanel {
         }
     }
     
-    /**
-     * Creates custom border for cell based on position
-     */
+    
+    //Creates custom border for cell based on position
+    
     private javax.swing.border.Border createCellBorder(int row, int col) {
         int top = (row % 3 == 0) ? 2 : 1;
         int left = (col % 3 == 0) ? 2 : 1;
@@ -91,9 +94,9 @@ public class GamePanel extends JPanel {
         return BorderFactory.createMatteBorder(top, left, bottom, right, GRID_COLOR);
     }
     
-    /**
-     * Sets up keyboard shortcuts
-     */
+    
+    //Sets up keyboard shortcuts
+    
     private void setupKeyBindings() {
         // Number input (1-9)
         for (int i = 1; i <= 9; i++) {
@@ -134,9 +137,9 @@ public class GamePanel extends JPanel {
         setupArrowKeyNavigation();
     }
     
-    /**
-     * Sets up arrow key navigation between cells
-     */
+    
+    //Sets up arrow key navigation between cells
+    
     private void setupArrowKeyNavigation() {
         getInputMap(WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("UP"), "up");
         getActionMap().put("up", new AbstractAction() {
@@ -179,9 +182,9 @@ public class GamePanel extends JPanel {
         });
     }
     
-    /**
-     * Handles cell click for selection
-     */
+    
+    //Handles cell click for selection
+    
     private void handleCellClick(int row, int col) {
         SudokuCell cell = cells[row][col];
         
@@ -201,9 +204,9 @@ public class GamePanel extends JPanel {
         requestFocusInWindow();
     }
     
-    /**
-     * Handles number input for selected cell
-     */
+    
+    //Handles number input for selected cell
+    
     private void handleNumberInput(int num) {
         if (selectedCell == null || selectedCell.isFixed()) {
             return;
@@ -216,9 +219,9 @@ public class GamePanel extends JPanel {
         controller.makeMove(row, col, num);
     }
     
-    /**
-     * Updates grid display from puzzle state
-     */
+    
+    //Updates grid display from puzzle state
+    
     public void updateGrid(SudokuPuzzle puzzle) {
         if (puzzle == null) {
             clearGrid();
@@ -236,9 +239,9 @@ public class GamePanel extends JPanel {
         repaint();
     }
     
-    /**
-     * Clears all cells in the grid
-     */
+    
+    //Clears all cells in the grid
+    
     public void clearGrid() {
         for (int row = 0; row < GRID_SIZE; row++) {
             for (int col = 0; col < GRID_SIZE; col++) {
@@ -250,9 +253,9 @@ public class GamePanel extends JPanel {
         repaint();
     }
     
-    /**
-     * Highlights a specific cell (for hints)
-     */
+    
+    //Highlights a specific cell (for hints)
+    
     public void highlightCell(int row, int col) {
         if (selectedCell != null) {
             selectedCell.setSelected(false);
@@ -262,9 +265,9 @@ public class GamePanel extends JPanel {
         repaint();
     }
     
-    /**
-     * Inner class representing a single Sudoku cell
-     */
+    
+    //Inner class representing a single Sudoku cell
+    
     private class SudokuCell extends JPanel {
         private int row;
         private int col;

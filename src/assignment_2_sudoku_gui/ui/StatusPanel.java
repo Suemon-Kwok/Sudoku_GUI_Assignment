@@ -1,6 +1,8 @@
 /*
 Name: Suemon Kwok
+
 Student ID: 14883335
+
 Software Construction COMP603 / ENSE 600
 */
 
@@ -9,9 +11,10 @@ package assignment_2_sudoku_gui.ui;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Status panel displaying game information and timer.
- * Shows current game state and elapsed time.
+/*
+Status panel displaying game information and timer.
+
+Shows current game state and elapsed time.
  */
 public class StatusPanel extends JPanel {
     
@@ -24,18 +27,18 @@ public class StatusPanel extends JPanel {
     private long gameStartTime;
     private boolean isTimerRunning;
     
-    /**
-     * Constructor initializes the status panel
-     */
+    
+    //Constructor initializes the status panel
+    
     public StatusPanel() {
         setupPanel();
         createComponents();
         setupTimer();
     }
     
-    /**
-     * Sets up panel properties
-     */
+    
+    //Sets up panel properties
+    
     private void setupPanel() {
         setLayout(new GridLayout(2, 2, 10, 5));
         setBorder(BorderFactory.createCompoundBorder(
@@ -45,9 +48,9 @@ public class StatusPanel extends JPanel {
         setPreferredSize(new Dimension(0, 80));
     }
     
-    /**
-     * Creates status display components
-     */
+    
+    //Creates status display components
+    
     private void createComponents() {
         statusLabel = new JLabel("Ready to play", SwingConstants.CENTER);
         statusLabel.setFont(new Font("Arial", Font.BOLD, 14));
@@ -68,17 +71,17 @@ public class StatusPanel extends JPanel {
         add(difficultyLabel);
     }
     
-    /**
-     * Sets up the display timer
-     */
+    
+    //Sets up the display timer
+    
     private void setupTimer() {
         displayTimer = new Timer(1000, e -> updateTimerDisplay());
         isTimerRunning = false;
     }
     
-    /**
-     * Updates timer display
-     */
+    
+    //Updates timer display
+    
     private void updateTimerDisplay() {
         if (isTimerRunning) {
             long elapsed = System.currentTimeMillis() - gameStartTime;
@@ -86,9 +89,9 @@ public class StatusPanel extends JPanel {
         }
     }
     
-    /**
-     * Formats milliseconds to MM:SS format
-     */
+    
+    //Formats milliseconds to MM:SS format
+    
     private String formatTime(long milliseconds) {
         long seconds = milliseconds / 1000;
         long minutes = seconds / 60;
@@ -96,34 +99,34 @@ public class StatusPanel extends JPanel {
         return String.format("%02d:%02d", minutes, seconds);
     }
     
-    /**
-     * Starts the timer
-     */
+    
+    //Starts the timer
+    
     public void startTimer() {
         gameStartTime = System.currentTimeMillis();
         isTimerRunning = true;
         displayTimer.start();
     }
     
-    /**
-     * Stops the timer
-     */
+    
+    //Stops the timer
+    
     public void stopTimer() {
         isTimerRunning = false;
         displayTimer.stop();
     }
     
-    /**
-     * Resets the timer
-     */
+    
+    //Resets the timer
+    
     public void resetTimer() {
         stopTimer();
         timerLabel.setText("Time: 00:00");
     }
     
-    /**
-     * Gets elapsed time in milliseconds
-     */
+    
+    //Gets elapsed time in milliseconds
+    
     public long getElapsedTime() {
         if (isTimerRunning) {
             return System.currentTimeMillis() - gameStartTime;
@@ -131,31 +134,31 @@ public class StatusPanel extends JPanel {
         return 0;
     }
     
-    /**
-     * Updates status message
-     */
+    
+    //Updates status message
+    
     public void setStatus(String message, Color color) {
         statusLabel.setText(message);
         statusLabel.setForeground(color);
     }
     
-    /**
-     * Updates game mode display
-     */
+    
+    //Updates game mode display
+    
     public void setMode(String mode) {
         modeLabel.setText("Mode: " + mode);
     }
     
-    /**
-     * Updates difficulty display
-     */
+    
+    //Updates difficulty display
+    
     public void setDifficulty(String difficulty) {
         difficultyLabel.setText("Difficulty: " + difficulty);
     }
     
-    /**
-     * Resets all status information
-     */
+    
+    //Resets all status information
+    
     public void reset() {
         resetTimer();
         setStatus("Ready to play", new Color(0, 128, 0));

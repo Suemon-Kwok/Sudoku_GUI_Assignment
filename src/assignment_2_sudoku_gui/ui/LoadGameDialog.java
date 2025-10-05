@@ -1,6 +1,8 @@
 /*
 Name: Suemon Kwok
+
 Student ID: 14883335
+
 Software Construction COMP603 / ENSE 600
 */
 
@@ -13,9 +15,10 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.List;
 
-/**
- * Dialog for loading saved games.
- * Displays list of saved games with details.
+/*
+Dialog for loading saved games.
+
+Displays list of saved games with details.
  */
 public class LoadGameDialog extends JDialog {
     
@@ -28,9 +31,9 @@ public class LoadGameDialog extends JDialog {
     private String selectedGame;
     private List<String> savedGames;
     
-    /**
-     * Constructor initializes the load dialog
-     */
+    
+    //Constructor initializes the load dialog
+    
     public LoadGameDialog(JFrame parent, List<String> savedGames) {
         super(parent, "Load Saved Game", true);
         this.savedGames = savedGames;
@@ -41,18 +44,18 @@ public class LoadGameDialog extends JDialog {
         layoutComponents();
     }
     
-    /**
-     * Sets up dialog properties
-     */
+    
+    //Sets up dialog properties
+    
     private void setupDialog() {
         setSize(500, 400);
         setLocationRelativeTo(getParent());
         setResizable(false);
     }
     
-    /**
-     * Creates dialog components
-     */
+    
+    //Creates dialog components
+    
     private void createComponents() {
         // Game list
         gameList = new JList<>(savedGames.toArray(new String[0]));
@@ -82,9 +85,9 @@ public class LoadGameDialog extends JDialog {
         cancelButton.addActionListener(e -> handleCancel());
     }
     
-    /**
-     * Arranges components in dialog
-     */
+    
+    //Arranges components in dialog
+    
     private void layoutComponents() {
         setLayout(new BorderLayout(10, 10));
         
@@ -116,9 +119,9 @@ public class LoadGameDialog extends JDialog {
         add(buttonPanel, BorderLayout.SOUTH);
     }
     
-    /**
-     * Updates details area with selected game info
-     */
+    
+    //Updates details area with selected game info
+    
     private void updateDetails() {
         String selected = gameList.getSelectedValue();
         if (selected == null) {
@@ -147,9 +150,9 @@ public class LoadGameDialog extends JDialog {
         }
     }
     
-    /**
-     * Formats milliseconds to readable time
-     */
+    
+    //Formats milliseconds to readable time
+    
     private String formatTime(long milliseconds) {
         long seconds = milliseconds / 1000;
         long minutes = seconds / 60;
@@ -157,9 +160,9 @@ public class LoadGameDialog extends JDialog {
         return String.format("%02d:%02d", minutes, seconds);
     }
     
-    /**
-     * Handles load button click
-     */
+    
+    //Handles load button click
+    
     private void handleLoad() {
         selectedGame = gameList.getSelectedValue();
         if (selectedGame != null) {
@@ -167,9 +170,9 @@ public class LoadGameDialog extends JDialog {
         }
     }
     
-    /**
-     * Handles delete button click
-     */
+    
+    //Handles delete button click
+    
     private void handleDelete() {
         String selected = gameList.getSelectedValue();
         if (selected == null) {
@@ -202,17 +205,17 @@ public class LoadGameDialog extends JDialog {
         }
     }
     
-    /**
-     * Handles cancel button click
-     */
+    
+    //Handles cancel button click
+    
     private void handleCancel() {
         selectedGame = null;
         dispose();
     }
     
-    /**
-     * Gets the selected game name
-     */
+    
+    //Gets the selected game name
+    
     public String getSelectedGame() {
         return selectedGame;
     }

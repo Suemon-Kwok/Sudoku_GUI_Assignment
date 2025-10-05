@@ -1,6 +1,8 @@
 /*
 Name: Suemon Kwok
+
 Student ID: 14883335
+
 Software Construction COMP603 / ENSE 600
 */
 
@@ -12,17 +14,18 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-/**
- * Dialog displaying game statistics from database.
- * Shows comprehensive player performance data.
+/*
+Dialog displaying game statistics from database.
+
+Shows comprehensive player performance data.
  */
 public class StatisticsDialog extends JDialog {
     
     private StatisticsData stats;
     
-    /**
-     * Constructor initializes the statistics dialog
-     */
+    
+    //Constructor initializes the statistics dialog
+    
     public StatisticsDialog(JFrame parent) {
         super(parent, "Game Statistics", true);
         
@@ -31,25 +34,25 @@ public class StatisticsDialog extends JDialog {
         createComponents();
     }
     
-    /**
-     * Loads statistics from database
-     */
+    
+    //Loads statistics from database
+    
     private void loadStatistics() {
         stats = DatabaseManager.getInstance().getStatistics();
     }
     
-    /**
-     * Sets up dialog properties
-     */
+    
+    //Sets up dialog properties
+    
     private void setupDialog() {
         setSize(500, 400);
         setLocationRelativeTo(getParent());
         setResizable(false);
     }
     
-    /**
-     * Creates and layouts dialog components
-     */
+    
+    //Creates and layouts dialog components
+    
     private void createComponents() {
         setLayout(new BorderLayout(10, 10));
         
@@ -89,9 +92,9 @@ public class StatisticsDialog extends JDialog {
         add(buttonPanel, BorderLayout.SOUTH);
     }
     
-    /**
-     * Creates a section panel with title and content
-     */
+    
+    //Creates a section panel with title and content
+    
     private JPanel createSectionPanel(String title, JPanel content) {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBorder(BorderFactory.createCompoundBorder(
@@ -109,9 +112,9 @@ public class StatisticsDialog extends JDialog {
         return panel;
     }
     
-    /**
-     * Creates panel with overall statistics
-     */
+    
+    //Creates panel with overall statistics
+    
     private JPanel createOverallStatsPanel() {
         JPanel panel = new JPanel(new GridLayout(4, 2, 10, 10));
         
@@ -130,9 +133,9 @@ public class StatisticsDialog extends JDialog {
         return panel;
     }
     
-    /**
-     * Creates panel with difficulty statistics
-     */
+    
+    //Creates panel with difficulty statistics
+    
     private JPanel createDifficultyStatsPanel() {
         JPanel panel = new JPanel(new GridLayout(4, 2, 10, 10));
         
@@ -151,9 +154,9 @@ public class StatisticsDialog extends JDialog {
         return panel;
     }
     
-    /**
-     * Creates a progress panel showing completion count
-     */
+    
+    //Creates a progress panel showing completion count
+    
     private JPanel createProgressPanel(int count) {
         JPanel panel = new JPanel(new BorderLayout(5, 0));
         
@@ -171,9 +174,9 @@ public class StatisticsDialog extends JDialog {
         return panel;
     }
     
-    /**
-     * Formats milliseconds to readable time
-     */
+    
+    //Formats milliseconds to readable time
+    
     private String formatTime(long milliseconds) {
         long seconds = milliseconds / 1000;
         long minutes = seconds / 60;

@@ -1,6 +1,8 @@
 /*
 Name: Suemon Kwok
+
 Student ID: 14883335
+
 Software Construction COMP603 / ENSE 600
 */
 
@@ -13,9 +15,10 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-/**
- * Main application frame containing all GUI components.
- * Implements MVC pattern with controller coordination.
+/*
+Main application frame containing all GUI components.
+
+Implements MVC pattern with controller coordination.
  */
 public class MainFrame extends JFrame {
     
@@ -27,9 +30,9 @@ public class MainFrame extends JFrame {
     private static final int FRAME_WIDTH = 800;
     private static final int FRAME_HEIGHT = 900;
     
-    /**
-     * Constructor initializes the main frame and all components
-     */
+    
+    //Constructor initializes the main frame and all components
+    
     public MainFrame() {
         super("Sudoku Game - GUI Version");
         
@@ -41,9 +44,9 @@ public class MainFrame extends JFrame {
         configureFrame();
     }
     
-    /**
-     * Initializes all GUI components
-     */
+    
+    //Initializes all GUI components
+    
     private void initializeComponents() {
         gamePanel = new GamePanel(gameController);
         controlPanel = new ControlPanel(gameController, gamePanel);
@@ -54,9 +57,9 @@ public class MainFrame extends JFrame {
         gameController.setGamePanel(gamePanel);
     }
     
-    /**
-     * Sets up the layout of components
-     */
+    
+    //Sets up the layout of components
+    
     private void setupLayout() {
         setLayout(new BorderLayout(10, 10));
         
@@ -76,9 +79,9 @@ public class MainFrame extends JFrame {
         add(mainPanel, BorderLayout.CENTER);
     }
     
-    /**
-     * Sets up the menu bar with File, Game, and Help menus
-     */
+    
+    //Sets up the menu bar with File, Game, and Help menus
+    
     private void setupMenuBar() {
         JMenuBar menuBar = new JMenuBar();
         
@@ -158,9 +161,9 @@ public class MainFrame extends JFrame {
         setJMenuBar(menuBar);
     }
     
-    /**
-     * Configures frame properties
-     */
+    
+    //Configures frame properties
+    
     private void configureFrame() {
         setSize(FRAME_WIDTH, FRAME_HEIGHT);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -176,17 +179,17 @@ public class MainFrame extends JFrame {
         });
     }
     
-    /**
-     * Shows game statistics dialog
-     */
+    
+    //Shows game statistics dialog
+    
     private void showStatistics() {
         StatisticsDialog dialog = new StatisticsDialog(this);
         dialog.setVisible(true);
     }
     
-    /**
-     * Shows instructions dialog
-     */
+    
+    //Shows instructions dialog
+    
     private void showInstructions() {
         String instructions = """
             HOW TO PLAY SUDOKU
@@ -235,9 +238,9 @@ public class MainFrame extends JFrame {
             "How to Play Sudoku", JOptionPane.INFORMATION_MESSAGE);
     }
     
-    /**
-     * Shows about dialog
-     */
+    
+    //Shows about dialog
+    
     private void showAbout() {
         String about = """
             Sudoku Game - GUI Version
@@ -266,9 +269,9 @@ public class MainFrame extends JFrame {
             "About Sudoku Game", JOptionPane.INFORMATION_MESSAGE);
     }
     
-    /**
-     * Handles application exit with cleanup
-     */
+    
+    //Handles application exit with cleanup
+    
     private void handleExit() {
         int choice = JOptionPane.showConfirmDialog(this,
             "Are you sure you want to exit?\nAny unsaved progress will be lost.",

@@ -1,6 +1,8 @@
 /*
 Name: Suemon Kwok
+
 Student ID: 14883335
+
 Software Construction COMP603 / ENSE 600
 */
 
@@ -13,9 +15,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-/**
- * Control panel containing all game control buttons.
- * Implements user interaction for game management.
+/*
+Control panel containing all game control buttons.
+
+Implements user interaction for game management.
  */
 public class ControlPanel extends JPanel {
     
@@ -35,9 +38,9 @@ public class ControlPanel extends JPanel {
     private static final Color BUTTON_HOVER_COLOR = new Color(100, 149, 237);
     private static final Color BUTTON_TEXT_COLOR = Color.BLACK;  // Changed to BLACK
     
-    /**
-     * Constructor initializes the control panel
-     */
+    
+    //Constructor initializes the control panel
+    
     public ControlPanel(GameControllerGUI controller, GamePanel gamePanel) {
         this.controller = controller;
         this.gamePanel = gamePanel;
@@ -47,9 +50,9 @@ public class ControlPanel extends JPanel {
         layoutComponents();
     }
     
-    /**
-     * Sets up panel properties
-     */
+    
+    //Sets up panel properties
+    
     private void setupPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createCompoundBorder(
@@ -59,9 +62,9 @@ public class ControlPanel extends JPanel {
         setPreferredSize(new Dimension(200, 0));
     }
     
-    /**
-     * Creates all control components
-     */
+    
+    //Creates all control components
+    
     private void createComponents() {
         // Game mode selector
         String[] gameModes = {"Classic Mode", "Timed Mode"};
@@ -95,9 +98,9 @@ public class ControlPanel extends JPanel {
         solveBtn.addActionListener(e -> handleSolve());
     }
     
-    /**
-     * Creates a styled button with consistent appearance
-     */
+    
+    //Creates a styled button with consistent appearance
+    
     private JButton createStyledButton(String text) {
         JButton button = new JButton(text);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -126,9 +129,9 @@ public class ControlPanel extends JPanel {
         return button;
     }
     
-    /**
-     * Arranges components in the panel
-     */
+    
+    //Arranges components in the panel
+    
     private void layoutComponents() {
         // Game settings section
         add(createSectionLabel("Game Settings"));
@@ -171,9 +174,9 @@ public class ControlPanel extends JPanel {
         add(Box.createVerticalGlue());
     }
     
-    /**
-     * Creates a styled section label
-     */
+    
+    //Creates a styled section label
+    
     private JLabel createSectionLabel(String text) {
         JLabel label = new JLabel(text);
         label.setFont(new Font("Arial", Font.BOLD, 13));
@@ -181,9 +184,9 @@ public class ControlPanel extends JPanel {
         return label;
     }
     
-    /**
-     * Handles new game creation
-     */
+    
+    //Handles new game creation
+    
     public void handleNewGame() {
         // Get selected game mode
         String modeStr = (String) gameModeCombo.getSelectedItem();
@@ -211,9 +214,9 @@ public class ControlPanel extends JPanel {
         gamePanel.updateGrid(controller.getCurrentPuzzle());
     }
     
-    /**
-     * Handles game save operation
-     */
+    
+    //Handles game save operation
+    
     public void handleSaveGame() {
         if (!controller.isGameInProgress()) {
             JOptionPane.showMessageDialog(this,
@@ -263,9 +266,9 @@ public class ControlPanel extends JPanel {
         }
     }
     
-    /**
-     * Handles game load operation
-     */
+    
+    //Handles game load operation
+    
     public void handleLoadGame() {
         // Get list of saved games
         List<String> savedGames = DatabaseManager.getInstance().getSavedGameNames();
@@ -317,9 +320,9 @@ public class ControlPanel extends JPanel {
         }
     }
     
-    /**
-     * Updates control panel state from loaded game
-     */
+    
+    //Updates control panel state from loaded game
+    
     private void updateControlsFromLoadedGame() {
         if (controller.getCurrentMode() != null) {
             gameModeCombo.setSelectedItem(controller.getCurrentMode().getModeName());
@@ -330,9 +333,9 @@ public class ControlPanel extends JPanel {
         }
     }
     
-    /**
-     * Handles undo operation
-     */
+    
+    //Handles undo operation
+    
     public void handleUndo() {
         if (!controller.isGameInProgress()) {
             JOptionPane.showMessageDialog(this,
@@ -352,9 +355,9 @@ public class ControlPanel extends JPanel {
         }
     }
     
-    /**
-     * Handles hint request
-     */
+    
+    //Handles hint request
+    
     public void handleHint() {
         if (!controller.isGameInProgress()) {
             JOptionPane.showMessageDialog(this,
@@ -390,9 +393,9 @@ public class ControlPanel extends JPanel {
             JOptionPane.INFORMATION_MESSAGE);
     }
     
-    /**
-     * Handles auto-solve request
-     */
+    
+    //Handles auto-solve request
+    
     public void handleSolve() {
         if (!controller.isGameInProgress()) {
             JOptionPane.showMessageDialog(this,
@@ -426,9 +429,9 @@ public class ControlPanel extends JPanel {
         }
     }
     
-    /**
-     * Enables/disables controls based on game state
-     */
+    
+    //Enables/disables controls based on game state
+    
     public void setControlsEnabled(boolean enabled) {
         saveGameBtn.setEnabled(enabled);
         undoBtn.setEnabled(enabled);
