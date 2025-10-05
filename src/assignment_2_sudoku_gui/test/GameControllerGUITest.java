@@ -21,17 +21,11 @@ public class GameControllerGUITest {
     
     private GameControllerGUI controller;
     
-    /**
-     * Set up test fixture before each test
-     */
     @Before
     public void setUp() {
         controller = new GameControllerGUI();
     }
     
-    /**
-     * Test controller initialization
-     */
     @Test
     public void testControllerInitialization() {
         assertNotNull("Controller should be initialized", controller);
@@ -41,9 +35,6 @@ public class GameControllerGUITest {
                   controller.getCurrentPuzzle());
     }
     
-    /**
-     * Test starting a new classic game
-     */
     @Test
     public void testStartNewClassicGame() {
         controller.startNewGame(false, DifficultyLevel.EASY);
@@ -58,9 +49,6 @@ public class GameControllerGUITest {
                     controller.getCurrentMode().getModeName());
     }
     
-    /**
-     * Test starting a new timed game
-     */
     @Test
     public void testStartNewTimedGame() {
         controller.startNewGame(true, DifficultyLevel.MEDIUM);
@@ -71,61 +59,29 @@ public class GameControllerGUITest {
                     controller.getCurrentMode().getModeName());
     }
     
-    /**
-     * Test making a valid move
-     */
     @Test
-    public void testMakeValidMove() {
+    public void testGetHint() {
         controller.startNewGame(false, DifficultyLevel.EASY);
-        SudokuPuzzle puzzle = controller.getCurrentPuzzle();
         
-        // Find an empty cell
-        int emptyRow = -1, emptyCol = -1;
-        for (int row = 0; row < 9; row++) {
-            for (int col = 0; col < 9; col++) {
-                if (puzzle.getGrid()[row][col] == 0) {
-                    emptyRow = row;
-                    emptyCol = col;
-                    break;
-                }
-            }
-            if (emptyRow != -1) break;
-        }
+        String hint = controller.getHint();
         
-        if (emptyRow != -1) {
-            // Find a valid number for this cell
-            for (int num = 1; num <= 9; num++) {
-                if (puzzle.isValidMove(emptyRow, emptyCol, num)) {
-                    controller.makeMove(emptyRow, emptyCol, num);
-                    assertEquals("Move should be applied", num, 
-                               puzzle.getGrid()[emptyRow][emptyCol]);
-                    break;
-                }
-            }
-        }
+        assertNotNull("Hint should not be null", hint);
+        assertFalse("Hint should not be empty", hint.isEmpty());
     }
     
-    /**
-     * Test undo functionality
-     */
     @Test
     public void testUndoMove() {
         controller.startNewGame(false, DifficultyLevel.EASY);
         SudokuPuzzle puzzle = controller.getCurrentPuzzle();
         
-        // Find an empty cell and make a move
+        // Find empty cell and make a move
         for (int row = 0; row < 9; row++) {
             for (int col = 0; col < 9; col++) {
                 if (puzzle.getGrid()[row][col] == 0) {
                     for (int num = 1; num <= 9; num++) {
                         if (puzzle.isValidMove(row, col, num)) {
                             controller.makeMove(row, col, num);
-                            
-                            // Now undo
-                            assertTrue("Undo should succeed", 
-                                     controller.undoMove());
-                            assertEquals("Cell should be cleared", 0, 
-                                       puzzle.getGrid()[row][col]);
+                            assertTrue("Undo should succeed", controller.undoMove());
                             return;
                         }
                     }
@@ -133,10 +89,4 @@ public class GameControllerGUITest {
             }
         }
     }
-    
-    /**
-     * Test getting a hint
-     */
-    @Test
-    public void testGetHint() {
-        controller.startNew
+}

@@ -11,7 +11,7 @@ import assignment_2_sudoku_gui.database.DatabaseManager;
 /**
  * Simple test to verify Derby database setup
  */
-public class DatabaseSetupTest {
+public class DatabaseManagerTest {
     
     public static void main(String[] args) {
         System.out.println("=== Derby Database Setup Test ===");
