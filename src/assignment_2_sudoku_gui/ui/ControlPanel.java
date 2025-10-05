@@ -33,6 +33,7 @@ public class ControlPanel extends JPanel {
     
     private static final Color BUTTON_COLOR = new Color(70, 130, 180);
     private static final Color BUTTON_HOVER_COLOR = new Color(100, 149, 237);
+    private static final Color BUTTON_TEXT_COLOR = Color.BLACK;  // Changed to BLACK
     
     /**
      * Constructor initializes the control panel
@@ -101,22 +102,24 @@ public class ControlPanel extends JPanel {
         JButton button = new JButton(text);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.setMaximumSize(new Dimension(180, 35));
-        button.setBackground(BUTTON_COLOR);
-        button.setForeground(Color.WHITE);
+        
+        // Use light background color so black text is visible
+        button.setBackground(new Color(220, 230, 240));  // Light blue-gray
+        button.setForeground(BUTTON_TEXT_COLOR);  // Black text
         button.setFocusPainted(false);
         button.setFont(new Font("Arial", Font.BOLD, 12));
         button.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(50, 100, 150), 1),
+            BorderFactory.createLineBorder(new Color(100, 130, 160), 2),
             BorderFactory.createEmptyBorder(5, 10, 5, 10)
         ));
         
-        // Add hover effect
+        // Add hover effect with lighter color
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                button.setBackground(BUTTON_HOVER_COLOR);
+                button.setBackground(new Color(180, 200, 220));  // Darker on hover
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                button.setBackground(BUTTON_COLOR);
+                button.setBackground(new Color(220, 230, 240));  // Back to light
             }
         });
         
