@@ -41,17 +41,31 @@ A comprehensive Sudoku game application featuring a graphical user interface bui
 ## 📦 Project Structure
 
 Sudoku_GUI_Suemon_Kwok_14883335/
+
 ├── src/
+
 │   └── assignment_2_sudoku_gui/
+
 │       ├── Assignment_2_Sudoku_GUI.java
+
 │       ├── controller/
+
 │       ├── database/
+
 │       ├── generators/
+
 │       ├── model/
+
 │       ├── strategies/
+
 │       ├── ui/
+
 │       └── test/
+
 ├── lib/
+
 │   ├── derby.jar
+
 │   └── derbyclient.jar
+
 └── README.md
