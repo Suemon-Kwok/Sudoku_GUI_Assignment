@@ -6,6 +6,7 @@ Software Construction COMP603 / ENSE 600
 
 package assignment_2_sudoku_gui.test;
 
+import assignment_2_sudoku_gui.*;
 import assignment_2_sudoku_gui.database.DatabaseManager;
 import assignment_2_sudoku_gui.database.SavedGameData;
 import assignment_2_sudoku_gui.database.StatisticsData;

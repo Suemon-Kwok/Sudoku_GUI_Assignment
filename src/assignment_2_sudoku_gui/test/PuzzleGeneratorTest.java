@@ -8,6 +8,7 @@ Software Construction COMP603 / ENSE 600
 
 package assignment_2_sudoku_gui.test;
 
+import assignment_2_sudoku_gui.*;
 import assignment_2_sudoku_gui.generators.PuzzleGenerator;
 import assignment_2_sudoku_gui.model.puzzle.SudokuPuzzle;
 import assignment_2_sudoku_gui.model.enums.DifficultyLevel;
